@@ -4,7 +4,7 @@
  * Plugin URL: https://github.com/aburiad/Popup-Notification
  * Text Domain: Popup-Notification
  * Domain Path: /languages/
- * Description: ws-preloader : A Popup-Notification screen add-on for your WordPress website.
+ * Description: PP-NOTIFY : A Popup-Notification screen add-on for your WordPress website.
  * Version: 1.0.0
  * Author: Riad
  * Author URI: https://github.com/aburiad
@@ -28,10 +28,12 @@ if (!defined('PP_VERSION')) {
     define('PP_VERSION', '1.0.0');
 }
 
-add_action('plugin_loaded','popup_init');
+add_action('plugins_loaded','popup_init');
 
 function popup_init(){
-    require_once PP_DIR . '/admin/Admin.php';
+    require_once PP_DIR . '/admin/admin.php';
+    require_once PP_DIR . '/public/frontEnd.php';
     new \popupnotification\Admin();
+    new \popupnotification\FrontEnd();
 }
 
