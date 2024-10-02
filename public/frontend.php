@@ -11,6 +11,11 @@ class FrontEnd
 
     public function markup()
     {
+        $data = get_option('vp-options_data');
+        $options = maybe_unserialize($data);
+        if (!isset($options['video_url'])) {
+            $options['video_url'] = '';
+        }
         ?>
         <!-- Overlay -->
         <div class="overlay" id="overlay"></div>
@@ -18,7 +23,7 @@ class FrontEnd
         <!-- Video Popup -->
         <div class="video-popup" id="videoPopup">
             <button class="close-btn" id="closePopup">Close</button>
-            <iframe id="popupVideo" src="https://www.youtube.com/embed/AsTagX5tG4E" allowfullscreen></iframe>
+            <iframe id="popupVideo" src="<?php echo esc_url($options['video_url']);?>" allowfullscreen></iframe>
         </div>
         <?php
     }
