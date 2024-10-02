@@ -92,3 +92,16 @@ body {
         width: 50%;
     }
 }
+
+.radio-input div {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+}
+
+.radio-input div span {
+    display: inline-block;
+    margin-bottom: 3px;
+}
