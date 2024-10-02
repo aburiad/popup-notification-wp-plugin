@@ -18,7 +18,7 @@ class FrontEnd
         <!-- Video Popup -->
         <div class="video-popup" id="videoPopup">
             <button class="close-btn" id="closePopup">Close</button>
-            <iframe id="popupVideo" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            <iframe id="popupVideo" src="https://www.youtube.com/embed/AsTagX5tG4E" allowfullscreen></iframe>
         </div>
         <?php
     }

@@ -26,11 +26,11 @@ class Admin
     }
 
     public function pp_setting(){
-        require_once PP_DIR . "/public/FrontEnd.php";
+        require_once PP_DIR . "/admin/admin-ui.php";
     }
     public function load_admin_assets(){
-        wp_enqueue_style('admin-css', PP_DIR . '/assets/css/admin.css', array(), PP_VERSION, 'all');
-        wp_enqueue_script('admin-js', PP_DIR . '/assets/js/admin.js', array(), PP_VERSION, true);
+        wp_enqueue_style('admin-css', PP_URL . '/assets/css/admin.css', array(), PP_VERSION, 'all');
+        wp_enqueue_script('admin-js', PP_URL . '/assets/js/admin.js', array(), PP_VERSION, true);
 
     }
 
