@@ -8,6 +8,9 @@
             if (!isset($options['video_url'])) {
                 $options['video_url'] = '';
             }
+            if (!isset($options['dtime'])) {
+                $options['dtime'] = 10;
+            }
             ?>
             <div class="formbold-mb-5">
                 <label for="video_url" class="formbold-form-label"> Video URL </label>
@@ -25,7 +28,7 @@
                 <input
                         type="number"
                         name="dtime"
-                        value="dtime"
+                        value="<?php echo esc_attr($options['dtime']);?>"
                         id="dtime"
                         placeholder="Display time"
                         class="formbold-form-input"
@@ -61,13 +64,14 @@
 </div>
 
 <?php
-
 if (isset($_POST['submit']) && check_admin_referer('pp_notification_nonce_action', 'pp_notification_nonce')) {
     $video_url = isset($_POST['video_url']) ? sanitize_text_field(wp_unslash($_POST['video_url'])) : '';
     $seleectpage = isset($_POST['seleectpage']) ? sanitize_text_field(wp_unslash($_POST['seleectpage'])) : '';
+    $dtime = isset($_POST['dtime']) ? sanitize_text_field(wp_unslash($_POST['dtime'])) : '';
 
     $options['video_url'] = $video_url;
     $options['seleectpage'] = $seleectpage;
+    $options['dtime'] = $dtime;
 
     // Update the option in the database
     $encoded_data = serialize($options); // Use serialize instead of json_encode
@@ -75,6 +79,4 @@ if (isset($_POST['submit']) && check_admin_referer('pp_notification_nonce_action
 
     var_dump($encoded_data);
 }
-
-
 ?>

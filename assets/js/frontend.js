@@ -3,7 +3,7 @@ window.onload = function () {
     setTimeout(function () {
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('videoPopup').style.display = 'block';
-    }, 1000);
+    }, 1);
 
     // Close the popup
     document.getElementById('closePopup').onclick = function () {

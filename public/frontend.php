@@ -5,7 +5,6 @@ class FrontEnd
 {
     public function __construct()
     {
-        add_action('wp_body_open', array($this, 'markup'));
         add_action('wp_enqueue_scripts', array($this, 'assets_load'));
         add_action('init', array($this, 'display_time'));
     }
@@ -37,13 +36,17 @@ class FrontEnd
 
     function display_time()
     {
+        $data = get_option('vp-options_data');
+        $options = maybe_unserialize($data);
+        if (!isset($options['dtime'])) {
+            $options['dtime'] = '';
+        }
 
-
-// Define the cookie name and duration for showing the notification again
+        // Define the cookie name and duration for showing the notification again
         $cookie_name = "notification_shown";
-        $notification_delay = 30; // 300 seconds = 5 minutes
+        $notification_delay = (int) $options['dtime']; // 300 seconds = 5 minutes
 
-// Check if the cookie is set or if the delay has passed
+        // Check if the cookie is set or if the delay has passed
         if (!isset($_COOKIE[$cookie_name]) || (time() - $_COOKIE[$cookie_name]) > $notification_delay) {
 
             // If no cookie exists or the delay has passed, show the notification
@@ -51,7 +54,7 @@ class FrontEnd
             This is your notification message!
           </div>";
 
-            
+            $this->markup();
             // Set or update the cookie to mark the current time as when the notification was shown
             setcookie($cookie_name, time(), time() + $notification_delay, "/"); // Cookie expires after 5 minutes
 
@@ -60,7 +63,6 @@ class FrontEnd
             echo "No notification this time. Notification will appear after " .
                 ($notification_delay - (time() - $_COOKIE[$cookie_name])) . " seconds.";
         }
-
     }
 }
 
