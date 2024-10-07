@@ -37,24 +37,24 @@
             <div class="formbold-mb-5 radio-input">
                 <label class="formbold-form-label" for="homepage">Display Page</label>
                 <div>
-                    <span>Home Page</span>
+                    <label for="homepage">Home Page</label>
                     <input type="radio" name="selectpage" value="homepage" id="homepage"/>
                 </div>
                 <div>
-                    <span>Enter Website</span>
-                    <input type="radio" name="seleectpage" value="enterwebsite" id="enterwebsite"/>
+                    <label for="enterwebsite">Enter Website</label>
+                    <input type="radio" name="selectpage" value="enterwebsite" id="enterwebsite"/>
                 </div>
                 <div>
-                    <span>Post Only</span>
-                    <input type="radio" name="seleectpage" value="post" id="post"/>
+                    <label for="post">Post Only</label>
+                    <input type="radio" name="selectpage" value="post" id="post"/>
                 </div>
                 <div>
-                    <span>Page Only</span>
-                    <input type="radio" name="seleectpage" value="page" id="page"/>
+                    <label for="page">Page Only</label>
+                    <input type="radio" name="selectpage" value="page" id="page"/>
                 </div>
                 <div>
-                    <span>Specefic Page</span>
-                    <input type="radio" name="seleectpage" value="specefic" id="specefic"/>
+                    <label for="specefic">Specefic Page</label>
+                    <input type="radio" name="selectpage" value="specefic" id="specefic"/>
                 </div>
             </div>
             <button type="submit" name="submit" class="formbold-btn">Submit Data</button>
@@ -66,11 +66,11 @@
 <?php
 if (isset($_POST['submit']) && check_admin_referer('pp_notification_nonce_action', 'pp_notification_nonce')) {
     $video_url = isset($_POST['video_url']) ? sanitize_text_field(wp_unslash($_POST['video_url'])) : '';
-    $seleectpage = isset($_POST['seleectpage']) ? sanitize_text_field(wp_unslash($_POST['seleectpage'])) : '';
+    $selectpage = isset($_POST['selectpage']) ? sanitize_text_field(wp_unslash($_POST['selectpage'])) : '';
     $dtime = isset($_POST['dtime']) ? sanitize_text_field(wp_unslash($_POST['dtime'])) : '';
 
     $options['video_url'] = $video_url;
-    $options['seleectpage'] = $seleectpage;
+    $options['selectpage'] = $selectpage;
     $options['dtime'] = $dtime;
 
     // Update the option in the database
