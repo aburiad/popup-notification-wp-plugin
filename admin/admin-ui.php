@@ -10,13 +10,24 @@
             }
             ?>
             <div class="formbold-mb-5">
-                <label for="name" class="formbold-form-label"> Video URL </label>
+                <label for="video_url" class="formbold-form-label"> Video URL </label>
                 <input
                         type="url"
                         name="video_url"
                         value="<?php echo esc_attr($options['video_url']); ?>"
                         id="video_url"
                         placeholder="Video URL"
+                        class="formbold-form-input"
+                />
+            </div>
+            <div class="formbold-mb-5">
+                <label for="dtime" class="formbold-form-label"> Display time </label>
+                <input
+                        type="number"
+                        name="dtime"
+                        value="dtime"
+                        id="dtime"
+                        placeholder="Display time"
                         class="formbold-form-input"
                 />
             </div>
