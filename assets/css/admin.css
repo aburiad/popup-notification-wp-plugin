@@ -101,7 +101,7 @@ body {
     gap: 4px;
 }
 
-.radio-input div span {
+.radio-input div label {
     display: inline-block;
     margin-bottom: 3px;
 }
