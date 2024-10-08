@@ -73,7 +73,7 @@ class FrontEnd
 
         // Define the cookie name and duration for showing the notification again
         $cookie_name = "notification_shown";
-        $notification_delay = (int) $options['dtime'];
+        $notification_delay = (int) $options['dtime'] * 3600;
 
         // Check if the cookie is set or if the delay has passed
         if (!isset($_COOKIE[$cookie_name]) || (time() - $_COOKIE[$cookie_name]) > $notification_delay) {
