@@ -45,7 +45,7 @@ class FrontEnd
             case 'search':
                 return is_search();
             case 'website':
-                return true; // Show on the entire website
+                return true;
             default:
                 return false;
         }
@@ -56,36 +56,36 @@ class FrontEnd
         $data = get_option('vp-options_data');
         $options = maybe_unserialize($data);
 
-        // Check if the time delay is set in the options
+
         if (!isset($options['dtime'])) {
             $options['dtime'] = '';
         }
 
         // Check if the selected page type is set in the options
         if (!isset($options['selectpage'])) {
-            $options['selectpage'] = 'homepage'; // Default to homepage
+            $options['selectpage'] = 'homepage';
         }
 
         // Only display the popup if the page type matches the selected option
         if (!$this->is_page_selected($options['selectpage'])) {
-            return; // Don't display the popup if the page doesn't match
+            return;
         }
 
-        // Define the cookie name and duration for showing the notification again
         $cookie_name = "notification_shown";
-        $notification_delay = (int) $options['dtime'];
+        $notification_delay = (int)$options['dtime'];
 
-        // Check if the cookie is set or if the delay has passed
+
         if (!isset($_COOKIE[$cookie_name]) || (time() - $_COOKIE[$cookie_name]) > $notification_delay) {
             setcookie($cookie_name, time(), time() + $notification_delay, "/");
 
             // Output the video popup markup
             $this->markup($options);
         } else {
-            // Show the time remaining until the next notification
+
             echo "No notification this time. Notification will appear after " .
                 ($notification_delay - (time() - $_COOKIE[$cookie_name])) . " seconds.";
         }
     }
 }
+
 ?>

@@ -33,6 +33,7 @@
                         placeholder="Display time"
                         class="formbold-form-input"
                 />
+                <em style="display: block;margin: 10px 0">Enter the display time, for example enter number 24, which means that the Pop-up Video will be displayed once per visitor, and the Pop-up Video will be displayed again to the same visitor after the 24 hours. Default is "1" (1 = 1 hour). If you want to show the Pop-up Video to all visitors with each visit, leave this option blank</em>
             </div>
             <div class="formbold-mb-5 radio-input">
                 <label class="formbold-form-label" for="homepage">Display Page</label>
@@ -52,10 +53,6 @@
                     <label for="page">Page Only</label>
                     <input type="radio" name="selectpage" value="page" id="page"/>
                 </div>
-                <div>
-                    <label for="specefic">Specefic Page</label>
-                    <input type="radio" name="selectpage" value="specefic" id="specefic"/>
-                </div>
             </div>
             <button type="submit" name="submit" class="formbold-btn">Submit Data</button>
     </div>
@@ -69,9 +66,11 @@ if (isset($_POST['submit']) && check_admin_referer('pp_notification_nonce_action
     $selectpage = isset($_POST['selectpage']) ? sanitize_text_field(wp_unslash($_POST['selectpage'])) : '';
     $dtime = isset($_POST['dtime']) ? sanitize_text_field(wp_unslash($_POST['dtime'])) : '';
 
+
     $options['video_url'] = $video_url;
     $options['selectpage'] = $selectpage;
     $options['dtime'] = $dtime;
+
 
     // Update the option in the database
     $encoded_data = serialize($options); // Use serialize instead of json_encode
