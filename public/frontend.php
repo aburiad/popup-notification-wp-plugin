@@ -72,7 +72,7 @@ class FrontEnd
         }
 
         $cookie_name = "notification_shown";
-        $notification_delay = (int)$options['dtime'];
+        $notification_delay = (int)$options['dtime'] * 3600;
 
 
         if (!isset($_COOKIE[$cookie_name]) || (time() - $_COOKIE[$cookie_name]) > $notification_delay) {
