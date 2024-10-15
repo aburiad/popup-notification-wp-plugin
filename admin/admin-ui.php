@@ -57,7 +57,15 @@
                     <label for="specefic">Specefic Page</label>
                     <input type="radio" name="selectpage" value="specefic" id="specefic"/>
                     <article class="specefic-options-wrapper">
-                        <h3>Choose Specefic Page</h3>
+                        <div class="specefic-header">
+                            <h3>Choose Specefic Page</h3>
+                            <button id="specefic-close-btn">X</button>
+                        </div>
+                        <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 75%">
+                            <option value="AL">Alabama</option>
+                            ...
+                            <option value="WY">Wyoming</option>
+                        </select>
                     </article>
                 </div>
             </div>

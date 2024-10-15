@@ -3,15 +3,19 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: "Inter", Arial, Helvetica, sans-serif;
 }
+
 .formbold-mb-5 {
     margin-bottom: 20px;
 }
+
 .formbold-pt-3 {
     padding-top: 12px;
 }
+
 .formbold-main-wrapper {
     display: flex;
     align-items: center;
@@ -24,6 +28,7 @@ body {
     background: white;
     padding: 30px;
 }
+
 .formbold-form-label {
     display: block;
     font-weight: 500;
@@ -31,6 +36,7 @@ body {
     color: #07074d;
     margin-bottom: 12px;
 }
+
 .formbold-form-label-2 {
     font-weight: 600;
     font-size: 20px;
@@ -49,6 +55,7 @@ body {
     outline: none;
     resize: none;
 }
+
 .formbold-form-input:focus {
     border-color: #6a64f1;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
@@ -66,6 +73,7 @@ body {
     width: 100%;
     cursor: pointer;
 }
+
 .formbold-btn:hover {
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
 }
@@ -74,26 +82,31 @@ body {
     margin-left: -12px;
     margin-right: -12px;
 }
+
 .formbold-px-3 {
     padding-left: 12px;
     padding-right: 12px;
 }
+
 .flex {
     display: flex;
 }
+
 .flex-wrap {
     flex-wrap: wrap;
 }
+
 .w-full {
     width: 100%;
 }
+
 @media (min-width: 540px) {
     .sm\:w-half {
         width: 50%;
     }
 }
 
-.radio-input div {
+.radio-input > div {
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
@@ -123,4 +136,51 @@ body {
     margin: auto;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     transition: .5s ease-in-out;
+    padding: 40px;
+}
+
+.specefic-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#specefic-close-btn {
+    background-color: #0095ff;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+#specefic-close-btn:hover,
+#specefic-close-btn:focus {
+    background-color: #07c;
+}
+
+#specefic-close-btn:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+#specefic-close-btn:active {
+    background-color: #0064bd;
+    box-shadow: none;
 }

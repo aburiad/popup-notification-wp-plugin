@@ -23,6 +23,8 @@ class Admin
     }
     public function load_admin_assets(){
         wp_enqueue_style('admin-css', PP_URL . '/assets/css/admin.css', array(), PP_VERSION, 'all');
+        wp_enqueue_style('select2', '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', array(), PP_VERSION, 'all');
         wp_enqueue_script('admin-js', PP_URL . '/assets/js/admin.js', array(), PP_VERSION, true);
+        wp_enqueue_script('select2-js',   '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array(), PP_VERSION, true);
     }
 }
