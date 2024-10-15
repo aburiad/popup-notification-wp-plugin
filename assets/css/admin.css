@@ -105,3 +105,22 @@ body {
     display: inline-block;
     margin-bottom: 3px;
 }
+
+/*specefic options*/
+.specefic-options-wrapper {
+    height: 300px;
+    width: 300px;
+    background-color: #fff;
+    position: absolute;
+    display: none;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50vw;
+    height: 50vh;
+    z-index: 2;
+    margin: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: .5s ease-in-out;
+}
