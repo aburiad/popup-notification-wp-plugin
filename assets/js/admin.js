@@ -1,12 +1,12 @@
 jQuery(document).ready(function () {
-    jQuery("#specefic").on("change", function() {
+    jQuery("#specefic").on("change", function () {
         if (jQuery(this).is(':checked')) {
             jQuery(".specefic-options-wrapper").show();
         } else {
             jQuery(".specefic-options-wrapper").hide();
         }
     });
-    jQuery("#specefic-close-btn").click(function(){
+    jQuery("#specefic-close-btn").click(function () {
         jQuery(".specefic-options-wrapper").hide();
     });
 

@@ -59,12 +59,29 @@
                     <article class="specefic-options-wrapper">
                         <div class="specefic-header">
                             <h3>Choose Specefic Page</h3>
-                            <button id="specefic-close-btn">X</button>
+                            <button type="button" id="specefic-close-btn">X</button>
                         </div>
-                        <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 75%">
+<!--                        <select name="speceficdata[]" id="speceficdata" multiple>-->
+<!--                            --><?php
+//                            $pages = get_pages();
+//                            foreach ($pages as $page){
+//                                $page_title = $page->post_title;
+//                                echo sprintf('<option value="%s">%s</option>',$page_title,$page_title);
+//                                var_dump($page_title);
+//                            }
+//                            ?>
+<!--                        </select>-->
+                        <select class="js-example-basic-multiple" name="speceficdata[]" multiple multiple="multiple" style="width: 75%">
                             <option value="AL">Alabama</option>
                             ...
                             <option value="WY">Wyoming</option>
+                            <?php
+                                $pages = get_pages();
+                                foreach ($pages as $page){
+                                    $page_title = $page->post_title;
+                                    echo sprintf('<option value="%s">%s</option>',$page_title,$page_title);
+                                }
+                            ?>
                         </select>
                     </article>
                 </div>
@@ -79,12 +96,15 @@
 if (isset($_POST['submit']) && check_admin_referer('pp_notification_nonce_action', 'pp_notification_nonce')) {
     $video_url = isset($_POST['video_url']) ? sanitize_text_field(wp_unslash($_POST['video_url'])) : '';
     $selectpage = isset($_POST['selectpage']) ? sanitize_text_field(wp_unslash($_POST['selectpage'])) : '';
+    $specefic = isset($_POST['speceficdata']) ? $_POST['speceficdata'] : '';
     $dtime = isset($_POST['dtime']) ? sanitize_text_field(wp_unslash($_POST['dtime'])) : '';
 
 
     $options['video_url'] = $video_url;
     $options['selectpage'] = $selectpage;
     $options['dtime'] = $dtime;
+    $options['speceficdata'] = $specefic;
+
 
 
     // Update the option in the database
