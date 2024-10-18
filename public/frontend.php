@@ -49,6 +49,7 @@ class FrontEnd
 
         $selected_page = $options['selectpage'];
 
+
         // Check if the current page matches the selected page type
         $is_page_selected = false;
 
@@ -62,14 +63,22 @@ class FrontEnd
             $is_page_selected = is_archive();
         } elseif ($selected_page === 'search') {
             $is_page_selected = is_search();
-        }
-        elseif ($selected_page === 'website') {
+        } elseif ($selected_page === 'website') {
             $is_page_selected = true; // For 'website', always return true
         }
 
+        $specefic_page = $options['speceficdata'];
+
+        foreach ($specefic_page as $page) {
+            if ($specefic_page == is_page($page)) {
+                $is_page_selected = true;
+            }
+        }
+
+
         // Now handle the cookie logic and show the popup if needed
         $cookie_name = "notification_shown";
-        $notification_delay = (int)$options['dtime'] * 3600;
+        $notification_delay = (int)$options['dtime'];
 
         if (!isset($_COOKIE[$cookie_name]) || (time() - $_COOKIE[$cookie_name]) > $notification_delay) {
             if ($is_page_selected) {
