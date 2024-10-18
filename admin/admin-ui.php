@@ -1,3 +1,4 @@
+<div class="overlay"></div>
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
         <form action="#" method="POST">
@@ -5,11 +6,17 @@
             <?php
             $data = get_option('vp-options_data');
             $options = maybe_unserialize($data);
+            if (!is_array($options)) {
+                $options = [];
+            }
             if (!isset($options['video_url'])) {
-                $options['video_url'] = '';
+                $options['video_url'] = 'https://www.youtube.com/embed/AsTagX5tG4E';
             }
             if (!isset($options['dtime'])) {
                 $options['dtime'] = 10;
+            }
+            if (!isset($options['speceficdata'])) {
+                $options['speceficdata'] = [];
             }
             ?>
             <div class="formbold-mb-5">
@@ -28,12 +35,15 @@
                 <input
                         type="number"
                         name="dtime"
-                        value="<?php echo esc_attr($options['dtime']);?>"
+                        value="<?php echo esc_attr($options['dtime']); ?>"
                         id="dtime"
                         placeholder="Display time"
                         class="formbold-form-input"
                 />
-                <em style="display: block;margin: 10px 0">Enter the display time, for example enter number 24, which means that the Pop-up Video will be displayed once per visitor, and the Pop-up Video will be displayed again to the same visitor after the 24 hours. Default is "1" (1 = 1 hour). If you want to show the Pop-up Video to all visitors with each visit, leave this option blank</em>
+                <em style="display: block;margin: 10px 0">Enter the display time, for example enter number 24, which
+                    means that the Pop-up Video will be displayed once per visitor, and the Pop-up Video will be
+                    displayed again to the same visitor after the 24 hours. Default is "1" (1 = 1 hour). If you want to
+                    show the Pop-up Video to all visitors with each visit, leave this option blank</em>
             </div>
             <div class="formbold-mb-5 radio-input">
                 <label class="formbold-form-label" for="homepage">Display Page</label>
@@ -50,6 +60,10 @@
                     <input type="radio" name="selectpage" value="post" id="post"/>
                 </div>
                 <div>
+                    <label for="search">Search Only</label>
+                    <input type="radio" name="selectpage" value="search" id="search"/>
+                </div>
+                <div>
                     <label for="page">Page Only</label>
                     <input type="radio" name="selectpage" value="page" id="page"/>
                 </div>
@@ -61,28 +75,17 @@
                             <h3>Choose Specefic Page</h3>
                             <button type="button" id="specefic-close-btn">X</button>
                         </div>
-<!--                        <select name="speceficdata[]" id="speceficdata" multiple>-->
-<!--                            --><?php
-//                            $pages = get_pages();
-//                            foreach ($pages as $page){
-//                                $page_title = $page->post_title;
-//                                echo sprintf('<option value="%s">%s</option>',$page_title,$page_title);
-//                                var_dump($page_title);
-//                            }
-//                            ?>
-<!--                        </select>-->
-                        <select class="js-example-basic-multiple" name="speceficdata[]" multiple multiple="multiple" style="width: 75%">
-                            <option value="AL">Alabama</option>
-                            ...
-                            <option value="WY">Wyoming</option>
+                        <select class="js-example-basic-multiple" name="speceficdata[]" multiple
+                                style="width: 75%;"></select>
+
+                        <div class="selected-page">
                             <?php
-                                $pages = get_pages();
-                                foreach ($pages as $page){
-                                    $page_title = $page->post_title;
-                                    echo sprintf('<option value="%s">%s</option>',$page_title,$page_title);
-                                }
+                            $pages_retrive = $options['speceficdata'];
+                            foreach ($pages_retrive as $page) {
+                                echo sprintf('<span>%s</span>', $page);
+                            }
                             ?>
-                        </select>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -106,11 +109,12 @@ if (isset($_POST['submit']) && check_admin_referer('pp_notification_nonce_action
     $options['speceficdata'] = $specefic;
 
 
-
     // Update the option in the database
     $encoded_data = serialize($options); // Use serialize instead of json_encode
     update_option('vp-options_data', $encoded_data);
 
     var_dump($encoded_data);
 }
+
+
 ?>

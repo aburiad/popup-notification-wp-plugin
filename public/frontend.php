@@ -68,10 +68,11 @@ class FrontEnd
         }
 
         $specefic_page = $options['speceficdata'];
-
-        foreach ($specefic_page as $page) {
-            if ($specefic_page == is_page($page)) {
-                $is_page_selected = true;
+        if($options['speceficdata']){
+            foreach ($specefic_page as $page) {
+                if ($specefic_page == is_page($page)) {
+                    $is_page_selected = true;
+                }
             }
         }
 
