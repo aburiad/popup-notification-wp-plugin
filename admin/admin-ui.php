@@ -77,7 +77,6 @@
                         </div>
                         <select class="js-example-basic-multiple" name="speceficdata[]" multiple
                                 style="width: 75%;"></select>
-
                         <div class="selected-page">
                             <?php
                             $pages_retrive = $options['speceficdata'];
@@ -88,6 +87,28 @@
                         </div>
                     </article>
                 </div>
+                <button type="button" id="testajax">Test Ajax</button>
+                <script>
+                    jQuery(document).ready(function ($) {
+                        $("#testajax").on("click", function () {
+                            $.ajax({
+                                url: "<?php echo admin_url('admin-ajax.php'); ?>",
+                                type: "post",
+                                data: {
+                                    action: 'my_action',
+
+                                },
+                                success: function (data) {
+                                    alert(data + " - ajax working test success");
+                                },
+                                error: function (xhr, status, error) {
+                                    alert("Error: " + error);
+                                }
+                            });
+                        });
+                    });
+                </script>
+
             </div>
             <button type="submit" name="submit" class="formbold-btn">Submit Data</button>
     </div>
