@@ -79,7 +79,7 @@ class FrontEnd
 
         // Now handle the cookie logic and show the popup if needed
         $cookie_name = "notification_shown";
-        $notification_delay = (int)$options['dtime'];
+        $notification_delay = (int)$options['dtime'] * 3600;
 
         if (!isset($_COOKIE[$cookie_name]) || (time() - $_COOKIE[$cookie_name]) > $notification_delay) {
             if ($is_page_selected) {
@@ -90,8 +90,8 @@ class FrontEnd
                 $this->markup();
             }
         } else {
-            echo "No notification this time. Notification will appear after " .
-                ($notification_delay - (time() - $_COOKIE[$cookie_name])) . " seconds.";
+            // echo "No notification this time. Notification will appear after " .
+            //     ($notification_delay - (time() - $_COOKIE[$cookie_name])) . " seconds.";
         }
     }
 
